@@ -44,7 +44,10 @@ export const getCategories = (req, res, next) => {
       data: arry1
     })
   } catch (error) {
-    res.sendStatus(500)
+    res.status(500).send({
+      status: 500,
+      message: "intenal error"
+    })
   }
 }
 
@@ -60,7 +63,7 @@ export const postCategories = (req, res, next) => {
     let category_names = categories.find(data => data.category_name == category_name)
     if (category_names) {
       return res.send({
-        status: 400, 
+        status: 400,
         message: "bu nomdagi categoriya mavjud"
       })
     } else {
